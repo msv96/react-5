@@ -1,8 +1,7 @@
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import CreateUser from "./CreateUser";
 import Dashboard from "./Dashboard";
@@ -16,10 +15,10 @@ function App() {
     <Router>
       <div id="wrapper">
         <Sidebar></Sidebar>
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
             <Topbar></Topbar>
-            <div class="container-fluid">
+            <div className="container-fluid">
             <Switch>
               <Route path="/" component={ Dashboard } exact={true}></Route>
               <Route path="/user" component={ Users } exact={true}></Route>
