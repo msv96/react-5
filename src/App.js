@@ -4,6 +4,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import CreateUser from "./CreateUser";
 import Dashboard from "./Dashboard";
 import Product from "./Product";
 import Sidebar from './Sidebar';
@@ -22,6 +23,7 @@ function App() {
             <Switch>
               <Route path="/" component={ Dashboard } exact={true}></Route>
               <Route path="/user" component={ Users } exact={true}></Route>
+              <Route path="/create_user" component={ CreateUser } exact={true}></Route>
               <Route path="/products" component={ Product } exact={true}></Route>
             </Switch>
             </div>
