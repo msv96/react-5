@@ -22,7 +22,7 @@ function App() {
             <Switch>
               <Route path="/" component={ Dashboard } exact={true}></Route>
               <Route path="/user" component={ Users } exact={true}></Route>
-              <Route path="/product" component={ Product } exact={true}></Route>
+              <Route path="/products" component={ Product } exact={true}></Route>
             </Switch>
             </div>
           </div>
