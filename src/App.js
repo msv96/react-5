@@ -4,6 +4,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Dashboard from "./Dashboard";
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
 
@@ -15,6 +16,9 @@ function App() {
         <div id="content-wrapper" class="d-flex flex-column">
           <div id="content">
             <Topbar></Topbar>
+            <div class="container-fluid">
+              <Dashboard></Dashboard>
+            </div>
             {/* <Switch>
               <Route path="/" component={  } exact={true}></Route>
               <Route path="/user" component={  } exact={true}></Route>
