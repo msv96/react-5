@@ -2,6 +2,26 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 function Users() {
+    let userdata = [
+        {
+            id: "1",
+            name: "Tiger Nixon",
+            position: "System Architect",
+            office: "Edinburgh",
+            age: "61",
+            startDate: "2011/04/25",
+            salary: "$320,800"
+        },
+        {
+            id: "2",
+            name: "Tiger Nixon",
+            position: "System Architect",
+            office: "Edinburgh",
+            age: "61",
+            startDate: "2011/04/25",
+            salary: "$320,800"
+        }
+    ];
     return (
         <div>
             <h1 className="h3 mb-2 text-gray-800">Users</h1>
@@ -28,32 +48,26 @@ function Users() {
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                    <td>
-                                        <button className="btn btn-sm btn-primary" style={{ marginLeft: "10px" }}>Edit</button>
-                                        <button className="btn btn-sm btn-danger" style={{ marginLeft: "10px" }}>Delete</button>
-                                    </td>
-                                </tr>
+                                {
+                                    userdata.map((el) => {
+                                        return (
+                                            <tr>
+                                                <td>{el.id}</td>
+                                                <td>{el.name}</td>
+                                                <td>{el.position}</td>
+                                                <td>{el.office}</td>
+                                                <td>{el.age}</td>
+                                                <td>{el.startDate}</td>
+                                                <td>{el.salary}</td>
+                                                <td>
+                                                    <Link to={`/user/edit/${el.id}`} className="btn btn-sm btn-primary" style={{ marginLeft: "10px" }}>Edit</Link>
+                                                    <button className="btn btn-sm btn-danger" style={{ marginLeft: "10px" }}>Delete</button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })
+                                }
                             </tbody>
                         </table>
                     </div>
