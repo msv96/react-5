@@ -5,8 +5,10 @@ import {
   Link
 } from "react-router-dom";
 import Dashboard from "./Dashboard";
+import Product from "./Product";
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
+import Users from "./Users";
 
 function App() {
   return (
@@ -17,13 +19,12 @@ function App() {
           <div id="content">
             <Topbar></Topbar>
             <div class="container-fluid">
-              <Dashboard></Dashboard>
+            <Switch>
+              <Route path="/" component={ Dashboard } exact={true}></Route>
+              <Route path="/user" component={ Users } exact={true}></Route>
+              <Route path="/product" component={ Product } exact={true}></Route>
+            </Switch>
             </div>
-            {/* <Switch>
-              <Route path="/" component={  } exact={true}></Route>
-              <Route path="/user" component={  } exact={true}></Route>
-              <Route path="/product" component={  } exact={true}></Route>
-            </Switch> */}
           </div>
         </div>
       </div>
