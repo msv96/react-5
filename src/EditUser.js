@@ -21,7 +21,7 @@ function EditUser(props) {
     setAge(userData.age);
     setStartDate(userData.startDate);
     setSalary(userData.salary);
-  }, []);
+  }, [props.match.params.id, userContext]);
 
   let handleSubmit = (el) => {
     el.preventDefault();

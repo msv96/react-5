@@ -9,7 +9,7 @@ function EditProduct(props) {
   const [age, setAge] = useState("");
   const [startDate, setStartDate] = useState("");
   const [salary, setSalary] = useState("");
-  
+
   const productContext = useContext(ProductContext);
   const history = useHistory();
 
@@ -21,7 +21,7 @@ function EditProduct(props) {
     setAge(productData.age);
     setStartDate(productData.startDate);
     setSalary(productData.salary);
-  }, []);
+  }, [props.match.params.id, productContext]);
 
   let handleSubmit = (el) => {
     el.preventDefault();
