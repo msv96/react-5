@@ -57,7 +57,7 @@ function Users() {
                       <td>{el.salary}</td>
                       <td>
                         <Link
-                          to={`/user/edit/${el.id}`}
+                          to={`/user/edit/${index + 1}`}
                           className="btn btn-sm btn-primary ml-3"
                         >
                           Edit

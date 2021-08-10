@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "./UserContext";
 
-function CreateUser() {
+function CreateUser(props) {
   const [userName, setUserName] = useState("");
   const [position, setPosition] = useState("");
   const [office, setOffice] = useState("");
