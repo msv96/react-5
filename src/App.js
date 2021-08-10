@@ -7,6 +7,7 @@ import EditUser from "./EditUser";
 import Product from "./Product";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
+import { UserProvider } from "./UserContext";
 import Users from "./Users";
 
 function App() {
@@ -20,17 +21,19 @@ function App() {
             <div className="container-fluid">
               <Switch>
                 <Route path="/" component={Dashboard} exact={true}></Route>
-                <Route path="/user" component={Users} exact={true}></Route>
-                <Route
-                  path="/user/create"
-                  component={CreateUser}
-                  exact={true}
-                ></Route>
-                <Route
-                  path="/user/edit/:id"
-                  component={EditUser}
-                  exact={true}
-                ></Route>
+                <UserProvider>
+                  <Route path="/user" component={Users} exact={true}></Route>
+                  <Route
+                    path="/user/create"
+                    component={CreateUser}
+                    exact={true}
+                  ></Route>
+                  <Route
+                    path="/user/edit/:id"
+                    component={EditUser}
+                    exact={true}
+                  ></Route>
+                </UserProvider>
                 <Route path="/product" component={Product} exact={true}></Route>
                 <Route
                   path="/product/create"
