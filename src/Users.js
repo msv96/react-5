@@ -36,8 +36,7 @@ function Users() {
       </p>
       <Link
         to="/user/create"
-        className="btn btn-sm btn-primary shadow-sm"
-        style={{ marginBottom: "15px" }}
+        className="btn btn-sm btn-primary shadow-sm mb-3"
       >
         <i className="fas fa-download fa-sm text-white-50"></i> Create User
       </Link>
@@ -79,14 +78,12 @@ function Users() {
                       <td>
                         <Link
                           to={`/user/edit/${el.id}`}
-                          className="btn btn-sm btn-primary"
-                          style={{ marginLeft: "10px" }}
+                          className="btn btn-sm btn-primary ml-3"
                         >
                           Edit
                         </Link>
                         <button
-                          className="btn btn-sm btn-danger"
-                          style={{ marginLeft: "10px" }}
+                          className="btn btn-sm btn-danger ml-3"
                         >
                           Delete
                         </button>

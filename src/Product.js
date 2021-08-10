@@ -36,8 +36,7 @@ function Product() {
       </p>
       <Link
         to="/product/create"
-        className="btn btn-sm btn-primary shadow-sm"
-        style={{ marginBottom: "15px" }}
+        className="btn btn-sm btn-primary shadow-sm mb-3"
       >
         <i className="fas fa-download fa-sm text-white-50"></i> Create Product
       </Link>
@@ -79,15 +78,11 @@ function Product() {
                       <td>
                         <Link
                           to={`/product/edit/${el.id}`}
-                          className="btn btn-sm btn-primary"
-                          style={{ marginLeft: "10px" }}
+                          className="btn btn-sm btn-primary mt-3"
                         >
                           Edit
                         </Link>
-                        <button
-                          className="btn btn-sm btn-danger"
-                          style={{ marginLeft: "10px" }}
-                        >
+                        <button className="btn btn-sm btn-danger mt-3">
                           Delete
                         </button>
                       </td>
