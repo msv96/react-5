@@ -36,26 +36,6 @@ function Sidebar() {
           <span>Products</span>
         </Link>
       </li>
-      <hr className="sidebar-divider" />
-      <div className="sidebar-heading">Addons</div>
-      <li className="nav-item">
-        <div className="nav-link collapsed">
-          <i className="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </div>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="charts.html">
-          <i className="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span>
-        </a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="tables.html">
-          <i className="fas fa-fw fa-table"></i>
-          <span>Tables</span>
-        </a>
-      </li>
     </ul>
   );
 }

@@ -5,6 +5,14 @@ import UserContext from "./UserContext";
 function Users() {
   const userContext = useContext(UserContext);
 
+  let handleDelete = (index) => {
+    let confirm = window.confirm("Do you want to delete?");
+    if(confirm) {
+      userContext.userList.splice(index - 1,1);
+      userContext.setUserList([...userContext.userList]);
+    }
+  }
+
   return (
     <div>
       <h1 className="h3 mb-2 text-gray-800">Users</h1>
@@ -62,7 +70,7 @@ function Users() {
                         >
                           Edit
                         </Link>
-                        <button className="btn btn-sm btn-danger ml-3">
+                        <button className="btn btn-sm btn-danger ml-3" onClick={() => {handleDelete(index + 1)}}>
                           Delete
                         </button>
                       </td>

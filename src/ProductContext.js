@@ -5,9 +5,9 @@ let ProductContext = React.createContext();
 export default ProductContext;
 
 export const ProductProvider = ({children}) => {
-    const [productlist, setProductList] = useState([]);
+    const [productList, setProductList] = useState([]);
     return (
-        <ProductContext.Provider value={{productlist,setProductList}}>
+        <ProductContext.Provider value={{productList,setProductList}}>
             {children}
         </ProductContext.Provider>
     );

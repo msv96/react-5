@@ -4,7 +4,7 @@ import CreateUser from "./CreateUser";
 import Dashboard from "./Dashboard";
 import EditProduct from "./EditProduct";
 import EditUser from "./EditUser";
-import Product from "./Product";
+import Products from "./Products";
 import { ProductProvider } from "./ProductContext";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
@@ -38,7 +38,7 @@ function App() {
                 <ProductProvider>
                   <Route
                     path="/product"
-                    component={Product}
+                    component={Products}
                     exact={true}
                   ></Route>
                   <Route

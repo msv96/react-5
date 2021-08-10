@@ -1,27 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import ProductContext from "./ProductContext";
 
-function Product() {
-  let productdata = [
-    {
-      id: "1",
-      name: "Tiger Nixon",
-      position: "System Architect",
-      office: "Edinburgh",
-      age: "61",
-      startDate: "2011/04/25",
-      salary: "$320,800",
-    },
-    {
-      id: "2",
-      name: "Tiger Nixon",
-      position: "System Architect",
-      office: "Edinburgh",
-      age: "61",
-      startDate: "2011/04/25",
-      salary: "$320,800",
-    },
-  ];
+function Products() {
+  const productContext = useContext(ProductContext);
+
+  let handleDelete = (index) => {
+    let confirm = window.confirm("Do you want to delete?");
+    if(confirm) {
+      productContext.productList.splice(index - 1,1);
+      productContext.setProductList([...productContext.productList]);
+    }
+  }
+
   return (
     <div>
       <h1 className="h3 mb-2 text-gray-800">Products</h1>
@@ -34,10 +25,7 @@ function Product() {
         </a>
         .
       </p>
-      <Link
-        to="/product/create"
-        className="btn btn-sm btn-primary shadow-sm mb-3"
-      >
+      <Link to="/product/create" className="btn btn-sm btn-primary shadow-sm mb-3">
         <i className="fas fa-download fa-sm text-white-50"></i> Create Product
       </Link>
       <div className="card shadow mb-4">
@@ -65,11 +53,11 @@ function Product() {
                 </tr>
               </thead>
               <tbody>
-                {productdata.map((el) => {
+                {productContext.productList.map((el, index) => {
                   return (
                     <tr>
-                      <td>{el.id}</td>
-                      <td>{el.name}</td>
+                      <td>{index + 1}</td>
+                      <td>{el.userName}</td>
                       <td>{el.position}</td>
                       <td>{el.office}</td>
                       <td>{el.age}</td>
@@ -77,12 +65,12 @@ function Product() {
                       <td>{el.salary}</td>
                       <td>
                         <Link
-                          to={`/product/edit/${el.id}`}
-                          className="btn btn-sm btn-primary mt-3"
+                          to={`/product/edit/${index + 1}`}
+                          className="btn btn-sm btn-primary ml-3"
                         >
                           Edit
                         </Link>
-                        <button className="btn btn-sm btn-danger mt-3">
+                        <button className="btn btn-sm btn-danger ml-3" onClick={() => {handleDelete(index + 1)}}>
                           Delete
                         </button>
                       </td>
@@ -98,4 +86,4 @@ function Product() {
   );
 }
 
-export default Product;
+export default Products;

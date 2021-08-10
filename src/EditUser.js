@@ -30,6 +30,7 @@ function EditUser(props) {
     userContext.setUserList([...userContext.userList]);
     history.push("/user");
   };
+
   return (
     <div>
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
