@@ -1,27 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "./UserContext";
 
 function Users() {
-  let userdata = [
-    {
-      id: "1",
-      name: "Tiger Nixon",
-      position: "System Architect",
-      office: "Edinburgh",
-      age: "61",
-      startDate: "2011/04/25",
-      salary: "$320,800",
-    },
-    {
-      id: "2",
-      name: "Tiger Nixon",
-      position: "System Architect",
-      office: "Edinburgh",
-      age: "61",
-      startDate: "2011/04/25",
-      salary: "$320,800",
-    },
-  ];
+  const userContext = useContext(UserContext);
+
   return (
     <div>
       <h1 className="h3 mb-2 text-gray-800">Users</h1>
@@ -34,10 +17,7 @@ function Users() {
         </a>
         .
       </p>
-      <Link
-        to="/user/create"
-        className="btn btn-sm btn-primary shadow-sm mb-3"
-      >
+      <Link to="/user/create" className="btn btn-sm btn-primary shadow-sm mb-3">
         <i className="fas fa-download fa-sm text-white-50"></i> Create User
       </Link>
       <div className="card shadow mb-4">
@@ -65,11 +45,11 @@ function Users() {
                 </tr>
               </thead>
               <tbody>
-                {userdata.map((el) => {
+                {userContext.userList.map((el, index) => {
                   return (
                     <tr>
-                      <td>{el.id}</td>
-                      <td>{el.name}</td>
+                      <td>{index + 1}</td>
+                      <td>{el.userName}</td>
                       <td>{el.position}</td>
                       <td>{el.office}</td>
                       <td>{el.age}</td>
@@ -82,9 +62,7 @@ function Users() {
                         >
                           Edit
                         </Link>
-                        <button
-                          className="btn btn-sm btn-danger ml-3"
-                        >
+                        <button className="btn btn-sm btn-danger ml-3">
                           Delete
                         </button>
                       </td>

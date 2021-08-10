@@ -33,15 +33,19 @@ function App() {
                     path="/user/edit/:id"
                     component={EditUser}
                     exact={true}
-                    ></Route>
+                  ></Route>
                 </UserProvider>
                 <ProductProvider>
-                  <Route path="/product" component={Product} exact={true}></Route>
+                  <Route
+                    path="/product"
+                    component={Product}
+                    exact={true}
+                  ></Route>
                   <Route
                     path="/product/create"
                     component={CreateProduct}
                     exact={true}
-                    ></Route>
+                  ></Route>
                   <Route
                     path="/product/edit/:id"
                     component={EditProduct}

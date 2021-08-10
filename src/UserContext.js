@@ -5,9 +5,9 @@ let UserContext = React.createContext();
 export default UserContext;
 
 export const UserProvider = ({children}) => {
-    const [userlist, setUserList] = useState([]);
+    const [userList, setUserList] = useState([]);
     return (
-        <UserContext.Provider value={{userlist,setUserList}}>
+        <UserContext.Provider value={{userList,setUserList}}>
             {children}
         </UserContext.Provider>
     );
