@@ -1,121 +1,81 @@
-import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import ProductContext from "./ProductContext";
 
 function EditProduct(props) {
-  const [userName, setUserName] = useState("");
-  const [position, setPosition] = useState("");
-  const [office, setOffice] = useState("");
-  const [age, setAge] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [salary, setSalary] = useState("");
+  const [productName, setProductName] = useState("");
+  const [price, setPrice] = useState("");
 
-  const productContext = useContext(ProductContext);
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
-    let productData = productContext.productList[props.match.params.id - 1];
-    setUserName(productData.userName);
-    setPosition(productData.position);
-    setOffice(productData.office);
-    setAge(productData.age);
-    setStartDate(productData.startDate);
-    setSalary(productData.salary);
-  }, [props.match.params.id, productContext]);
+    let fetchData = async () => {
+      try {
+        let products = await axios.get(
+          `https://60f460de3cb0870017a8a216.mockapi.io/products/${props.match.params.id}`
+        );
+        setProductName(products.data.product_name);
+        setPrice(products.data.price);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [props]);
 
-  let handleSubmit = (el) => {
+  let handleSubmit = async (el) => {
     el.preventDefault();
-    let productData = { userName, position, office, age, startDate, salary };
-    productContext.productList[props.match.params.id - 1] = productData;
-    productContext.setProductList([...productContext.productList, productData]);
-    history.push("/user");
+    try {
+      setLoading(true);
+      await axios.put(
+        `https://60f460de3cb0870017a8a216.mockapi.io/products/${props.match.params.id}`,
+        { productName, price }
+      );
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+    history.push("/product");
   };
 
   return (
     <div>
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 className="h3 mb-0 text-gray-800">Create User</h1>
+        <h1 className="h3 mb-0 text-gray-800">Update Product</h1>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
-              <label>Username</label>
+              <label>Product Name</label>
               <input
                 type="text"
                 className="form-control"
-                value={userName}
+                value={productName}
                 onChange={(el) => {
-                  setUserName(el.target.value);
+                  setProductName(el.target.value);
                 }}
-                required
               />
             </div>
             <div className="col-lg-6">
-              <label>Position</label>
+              <label>Price</label>
               <input
                 type="text"
                 className="form-control"
-                value={position}
+                value={price}
                 onChange={(el) => {
-                  setPosition(el.target.value);
+                  setPrice(el.target.value);
                 }}
-                required
-              />
-            </div>
-            <div className="col-lg-6">
-              <label>Office</label>
-              <input
-                type="text"
-                className="form-control"
-                value={office}
-                onChange={(el) => {
-                  setOffice(el.target.value);
-                }}
-                required
-              />
-            </div>
-            <div className="col-lg-6">
-              <label>Age</label>
-              <input
-                type="text"
-                className="form-control"
-                value={age}
-                onChange={(el) => {
-                  setAge(el.target.value);
-                }}
-                required
-              />
-            </div>
-            <div className="col-lg-6">
-              <label>Start Date</label>
-              <input
-                type="date"
-                className="form-control"
-                value={startDate}
-                onChange={(el) => {
-                  setStartDate(el.target.value);
-                }}
-                required
-              />
-            </div>
-            <div className="col-lg-6">
-              <label>Salary</label>
-              <input
-                type="text"
-                className="form-control"
-                value={salary}
-                onChange={(el) => {
-                  setSalary(el.target.value);
-                }}
-                required
               />
             </div>
             <div className="col-lg-12">
               <input
                 type="submit"
-                value="Submit"
+                value="Update"
                 className="btn btn-primary mt-3"
+                disabled={loading}
               />
             </div>
           </div>

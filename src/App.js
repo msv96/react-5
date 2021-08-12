@@ -5,10 +5,8 @@ import Dashboard from "./Dashboard";
 import EditProduct from "./EditProduct";
 import EditUser from "./EditUser";
 import Products from "./Products";
-import { ProductProvider } from "./ProductContext";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
-import { UserProvider } from "./UserContext";
 import Users from "./Users";
 
 function App() {
@@ -22,7 +20,6 @@ function App() {
             <div className="container-fluid">
               <Switch>
                 <Route path="/" component={Dashboard} exact={true}></Route>
-                <UserProvider>
                   <Route path="/user" component={Users} exact={true}></Route>
                   <Route
                     path="/user/create"
@@ -34,8 +31,6 @@ function App() {
                     component={EditUser}
                     exact={true}
                   ></Route>
-                </UserProvider>
-                <ProductProvider>
                   <Route
                     path="/product"
                     component={Products}
@@ -51,7 +46,6 @@ function App() {
                     component={EditProduct}
                     exact={true}
                   ></Route>
-                </ProductProvider>
               </Switch>
             </div>
           </div>
