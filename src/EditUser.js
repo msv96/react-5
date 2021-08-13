@@ -1,66 +1,49 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-
+import UserContext from "./UserContext";
 function EditUser(props) {
-  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
   const [position, setPosition] = useState("");
-  const [mail, setMail] = useState("");
+  const [office, setOffice] = useState("");
+  const [age, setAge] = useState("");
+  const [startDate, setStartDate] = useState("");
   const [salary, setSalary] = useState("");
-
-  const [loading, setLoading] = useState(false);
+  const userContext = useContext(UserContext);
   const history = useHistory();
-
   useEffect(() => {
-    let fetchData = async () => {
-      try {
-        let users = await axios.get(
-          `https://60f460de3cb0870017a8a216.mockapi.io/users/${props.match.params.id}`
-        );
-        setName(users.data.name);
-        setPosition(users.data.position);
-        setMail(users.data.mail);
-        setSalary(users.data.salary);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, [props]);
-
-  let handleSubmit = async (el) => {
+    let userData = userContext.userList[props.match.params.id - 1];
+    setUserName(userData.userName);
+    setPosition(userData.position);
+    setOffice(userData.office);
+    setAge(userData.age);
+    setStartDate(userData.startDate);
+    setSalary(userData.salary);
+  }, [props.match.params.id, userContext]);
+  let handleSubmit = (el) => {
     el.preventDefault();
-    try {
-      setLoading(true);
-      await axios.put(
-        `https://60f460de3cb0870017a8a216.mockapi.io/users/${props.match.params.id}`,
-        { name, position, mail, salary }
-      );
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
+    let userData = { userName, position, office, age, startDate, salary };
+    userContext.userList[props.match.params.id - 1] = userData;
+    userContext.setUserList([...userContext.userList]);
     history.push("/user");
   };
-
   return (
     <div>
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 className="h3 mb-0 text-gray-800">Update User</h1>
+        <h1 className="h3 mb-0 text-gray-800">Edit User</h1>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
-              <label>Name</label>
+              <label>Username</label>
               <input
                 type="text"
                 className="form-control"
-                value={name}
+                value={userName}
                 onChange={(el) => {
-                  setName(el.target.value);
+                  setUserName(el.target.value);
                 }}
+                required
               />
             </div>
             <div className="col-lg-6">
@@ -72,17 +55,43 @@ function EditUser(props) {
                 onChange={(el) => {
                   setPosition(el.target.value);
                 }}
+                required
               />
             </div>
             <div className="col-lg-6">
-              <label>Email ID</label>
+              <label>Office</label>
               <input
                 type="text"
                 className="form-control"
-                value={mail}
+                value={office}
                 onChange={(el) => {
-                  setMail(el.target.value);
+                  setOffice(el.target.value);
                 }}
+                required
+              />
+            </div>
+            <div className="col-lg-6">
+              <label>Age</label>
+              <input
+                type="text"
+                className="form-control"
+                value={age}
+                onChange={(el) => {
+                  setAge(el.target.value);
+                }}
+                required
+              />
+            </div>
+            <div className="col-lg-6">
+              <label>Start Date</label>
+              <input
+                type="date"
+                className="form-control"
+                value={startDate}
+                onChange={(el) => {
+                  setStartDate(el.target.value);
+                }}
+                required
               />
             </div>
             <div className="col-lg-6">
@@ -94,6 +103,7 @@ function EditUser(props) {
                 onChange={(el) => {
                   setSalary(el.target.value);
                 }}
+                required
               />
             </div>
             <div className="col-lg-12">
@@ -101,7 +111,6 @@ function EditUser(props) {
                 type="submit"
                 value="Update"
                 className="btn btn-primary mt-3"
-                disabled={loading}
               />
             </div>
           </div>
@@ -110,5 +119,4 @@ function EditUser(props) {
     </div>
   );
 }
-
 export default EditUser;

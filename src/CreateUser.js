@@ -1,29 +1,19 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-
+import UserContext from "./UserContext";
 function CreateUser() {
-  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
   const [position, setPosition] = useState("");
-  const [mail, setOffice] = useState("");
+  const [office, setOffice] = useState("");
+  const [age, setAge] = useState("");
+  const [startDate, setStartDate] = useState("");
   const [salary, setSalary] = useState("");
-
-  const [loading, setLoading] = useState(false);
+  const userContext = useContext(UserContext);
   const history = useHistory();
-
-  let handleSubmit = async (el) => {
+  let handleSubmit = (el) => {
     el.preventDefault();
-    try {
-      setLoading(true);
-      await axios.post(
-        `https://60f460de3cb0870017a8a216.mockapi.io/users`,
-        { name, position, mail, salary }
-      );
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
+    let userData = { userName, position, office, age, startDate, salary };
+    userContext.setUserList([...userContext.userList, userData]);
     history.push("/user");
   };
   return (
@@ -35,14 +25,15 @@ function CreateUser() {
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
-              <label>Name</label>
+              <label>Username</label>
               <input
                 type="text"
                 className="form-control"
-                value={name}
+                value={userName}
                 onChange={(el) => {
-                  setName(el.target.value);
+                  setUserName(el.target.value);
                 }}
+                required
               />
             </div>
             <div className="col-lg-6">
@@ -54,20 +45,45 @@ function CreateUser() {
                 onChange={(el) => {
                   setPosition(el.target.value);
                 }}
+                required
               />
             </div>
             <div className="col-lg-6">
-              <label>Email ID</label>
+              <label>Office</label>
               <input
                 type="text"
                 className="form-control"
-                value={mail}
+                value={office}
                 onChange={(el) => {
                   setOffice(el.target.value);
                 }}
+                required
               />
             </div>
             <div className="col-lg-6">
+              <label>Age</label>
+              <input
+                type="text"
+                className="form-control"
+                value={age}
+                onChange={(el) => {
+                  setAge(el.target.value);
+                }}
+                required
+              />
+            </div>
+            <div className="col-lg-6">
+              <label>Start Date</label>
+              <input
+                type="date"
+                className="form-control"
+                value={startDate}
+                onChange={(el) => {
+                  setStartDate(el.target.value);
+                }}
+                required
+              />
+            </div><div className="col-lg-6">
               <label>Salary</label>
               <input
                 type="text"
@@ -76,6 +92,7 @@ function CreateUser() {
                 onChange={(el) => {
                   setSalary(el.target.value);
                 }}
+                required
               />
             </div>
             <div className="col-lg-12">
@@ -83,7 +100,6 @@ function CreateUser() {
                 type="submit"
                 value="Submit"
                 className="btn btn-primary mt-3"
-                disabled={loading}
               />
             </div>
           </div>
@@ -92,5 +108,4 @@ function CreateUser() {
     </div>
   );
 }
-
 export default CreateUser;
