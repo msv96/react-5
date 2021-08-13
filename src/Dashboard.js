@@ -10,7 +10,7 @@ function Dashboard() {
           <i className="fas fa-download fa-sm text-white-50"></i> Generate Report
         </button>
       </div>
-      <div className="d-flex justify-content-center">
+      <div className="d-md-flex justify-content-center">
         <Link to="/user" className="btn btn-lg btn-outline-primary p-3 m-5">
           <i className="fas fa-fw fa-cog"></i>
           <span>Users</span>
