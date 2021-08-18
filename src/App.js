@@ -34,7 +34,6 @@ function App() {
                   component={EditUser}
                   exact={true}
                 ></Route>
-                </UserProvider>
                 <ProductProvider>
                 <Route
                   path="/product"
@@ -50,8 +49,9 @@ function App() {
                   path="/product/edit/:id"
                   component={EditProduct}
                   exact={true}
-                ></Route>
+                  ></Route>
                 </ProductProvider>
+                </UserProvider>
               </Switch>
             </div>
           </div>
