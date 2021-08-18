@@ -1,3 +1,5 @@
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "./UserContext";
@@ -23,7 +25,7 @@ function Users() {
           .
         </p>
         <Link to="/user/create" className="btn btn-sm btn-primary shadow-sm mb-3">
-          <i className="fas fa-download fa-sm text-white-50"></i> Create User
+          <FontAwesomeIcon icon={faDownload} size="sm" className="text-white-50"></FontAwesomeIcon> Create User
         </Link>
         <div className="card shadow mb-4">
           <div className="card-header py-3">

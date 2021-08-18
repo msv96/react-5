@@ -1,3 +1,5 @@
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ProductContext from "./ProductContext";
@@ -26,7 +28,8 @@ function Products() {
         to="/product/create"
         className="btn btn-sm btn-primary shadow-sm mb-3"
       >
-        <i className="fas fa-download fa-sm text-white-50"></i> Create Product
+        <FontAwesomeIcon icon={faDownload} size="sm" className="text-white-50"></FontAwesomeIcon> Create
+        Product
       </Link>
       <div className="card shadow mb-4">
         <div className="card-header py-3">

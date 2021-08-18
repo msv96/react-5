@@ -1,5 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCog,
+  faLaughWink,
+  faTachometerAlt,
+  faWrench,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Sidebar() {
   return (
@@ -9,31 +16,29 @@ function Sidebar() {
     >
       <div className="sidebar-brand d-flex align-items-center justify-content-center">
         <div className="sidebar-brand-icon rotate-n-15">
-          <i className="fas fa-laugh-wink"></i>
+          <FontAwesomeIcon icon={faLaughWink} size="2x"></FontAwesomeIcon>
         </div>
-        <div className="sidebar-brand-text mx-3">
-          SB Admin <sup>2</sup>
-        </div>
+        <div className="sidebar-brand-text mx-3">MSV96</div>
       </div>
       <hr className="sidebar-divider my-0" />
       <li className="nav-item active">
         <Link className="nav-link" to="/">
-          <i className="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span>
+          <FontAwesomeIcon icon={faTachometerAlt} className="text-white-50"></FontAwesomeIcon>
+          <span> Dashboard</span>
         </Link>
       </li>
       <hr className="sidebar-divider" />
       <div className="sidebar-heading">Interface</div>
       <li className="nav-item">
         <Link className="nav-link collapsed" to="/user">
-          <i className="fas fa-fw fa-cog"></i>
-          <span>Users</span>
+          <FontAwesomeIcon icon={faCog} className="text-white-50"></FontAwesomeIcon>
+          <span> Users</span>
         </Link>
       </li>
       <li className="nav-item">
         <Link className="nav-link collapsed" to="/product">
-          <i className="fas fa-fw fa-wrench"></i>
-          <span>Products</span>
+          <FontAwesomeIcon icon={faWrench} className="text-white-50"></FontAwesomeIcon>
+          <span> Products</span>
         </Link>
       </li>
     </ul>
