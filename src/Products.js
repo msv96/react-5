@@ -45,14 +45,10 @@ function Products() {
             >
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-                  <th>Action</th>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -60,12 +56,8 @@ function Products() {
                   return (
                     <tr>
                       <td>{index + 1}</td>
-                      <td>{el.userName}</td>
-                      <td>{el.position}</td>
-                      <td>{el.office}</td>
-                      <td>{el.age}</td>
-                      <td>{el.startDate}</td>
-                      <td>{el.salary}</td>
+                      <td>{el.productName}</td>
+                      <td>$ {el.price}</td>
                       <td>
                         <Link
                           to={`/product/edit/${index + 1}`}

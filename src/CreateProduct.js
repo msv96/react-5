@@ -1,20 +1,16 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ProductContext from "./ProductContext";
+
 function CreateProduct() {
-  const [userName, setUserName] = useState("");
-  const [position, setPosition] = useState("");
-  const [office, setOffice] = useState("");
-  const [age, setAge] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [salary, setSalary] = useState("");
-  
+  const [productName, setProductName] = useState("");
+  const [price, setPrice] = useState("");
   const productContext = useContext(ProductContext);
   const history = useHistory();
   
   let handleSubmit = (el) => {
     el.preventDefault();
-    let productData = { userName, position, office, age, startDate, salary };
+    let productData = { productName, price };
     productContext.setProductList([...productContext.productList, productData]);
     history.push("/product");
   };
@@ -27,74 +23,25 @@ function CreateProduct() {
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
-              <label>Username</label>
+              <label>Product Name</label>
               <input
                 type="text"
                 className="form-control"
-                value={userName}
-                
+                value={productName}
                 onChange={(el) => {
-                  setUserName(el.target.value);
+                  setProductName(el.target.value);
                 }}
                 required
               />
             </div>
             <div className="col-lg-6">
-              <label>Position</label>
+              <label>Price</label>
               <input
                 type="text"
                 className="form-control"
-                value={position}
+                value={price}
                 onChange={(el) => {
-                  setPosition(el.target.value);
-                }}
-                required
-              />
-            </div>
-            <div className="col-lg-6">
-              <label>Office</label>
-              <input
-                type="text"
-                className="form-control"
-                value={office}
-                onChange={(el) => {
-                  setOffice(el.target.value);
-                }}
-                required
-              />
-            </div>
-            <div className="col-lg-6">
-              <label>Age</label>
-              <input
-                type="text"
-                className="form-control"
-                value={age}
-                onChange={(el) => {
-                  setAge(el.target.value);
-                }}
-                required
-              />
-            </div>
-            <div className="col-lg-6">
-              <label>Start Date</label>
-              <input
-                type="date"
-                className="form-control"
-                value={startDate}
-                onChange={(el) => {
-                  setStartDate(el.target.value);
-                }}
-                required
-              />
-            </div>
-            <div className="col-lg-6">
-              <label>Salary</label>
-              <input
-                type="text"
-                className="form-control"
-                value={salary}
-                onChange={(el) => {
-                  setSalary(el.target.value);
+                  setPrice(el.target.value);
                 }}
                 required
               />
