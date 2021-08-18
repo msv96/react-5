@@ -15,15 +15,6 @@ function Users() {
     return (
       <div>
         <h1 className="h3 mb-2 text-gray-800">Users</h1>
-        <p className="mb-4">
-          DataTables is a third party plugin that is used to generate the demo
-          table below. For more information about DataTables, please visit the
-          <a target="_blank" href="https://datatables.net" rel="noreferrer">
-            {" "}
-            official DataTables documentation
-          </a>
-          .
-        </p>
         <Link to="/user/create" className="btn btn-sm btn-primary shadow-sm mb-3">
           <FontAwesomeIcon icon={faDownload} size="sm" className="text-white-50"></FontAwesomeIcon> Create User
         </Link>
